@@ -13,7 +13,7 @@ class Stub extends React.Component {
             <div className="contentColumn">
                 <div className="stubRow">
                     <img className="stubPic" src={StubImg} alt="under development pic"/>
-                    <button onClick={event => this.props.activePanelHandler("Default")} className = "stubButton">Буду Ждать</button>
+                    <button onClick={event => this.props.activePanelHandler("SignIn")} className = "stubButton">Буду Ждать</button>
                 </div>
             </div>
         )

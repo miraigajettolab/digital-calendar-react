@@ -22,7 +22,9 @@ class SignIn extends React.Component {
     signInHandler() {
         const auth = firebase.auth();
         const promise = auth.signInWithEmailAndPassword(this.state.email, this.state.password)
-        promise.catch(e => console.log(e.message))
+        promise
+        .then(user => this.props.activePanelHandler("Default"))
+        .catch(e => console.log(e.message))
     }
 
     render() {
@@ -32,7 +34,7 @@ class SignIn extends React.Component {
                     <input 
                         className = "textField"
                         type = "email"
-                        placeholder = "email"
+                        placeholder = "Email"
                         name = "email"
                         value = {this.state.email}
                         onChange = {this.changeHandler}
@@ -40,7 +42,7 @@ class SignIn extends React.Component {
                     <input 
                         className = "textField"
                         type = "password"
-                        placeholder = "пароль"
+                        placeholder = "Пароль"
                         name = "password"
                         value = {this.state.password}
                         onChange = {this.changeHandler}
