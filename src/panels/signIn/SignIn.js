@@ -1,5 +1,6 @@
 import React from "react"
 import "./signIn.css"
+import * as firebase from "firebase"
 
 class SignIn extends React.Component {
     constructor() {
@@ -9,6 +10,7 @@ class SignIn extends React.Component {
             password:""
         }
         this.changeHandler = this.changeHandler.bind(this)
+        this.signInHandler = this.signInHandler.bind(this)
     }
 
     changeHandler(event) {
@@ -17,10 +19,16 @@ class SignIn extends React.Component {
         this.setState({[name]:value})
     }
 
+    signInHandler() {
+        const auth = firebase.auth();
+        const promise = auth.signInWithEmailAndPassword(this.state.email, this.state.password)
+        promise.catch(e => console.log(e.message))
+    }
+
     render() {
         return (
             <div className="contentColumn">
-                <form className="formRow">
+                <div className="formRow">
                     <input 
                         className = "textField"
                         type = "email"
@@ -37,10 +45,10 @@ class SignIn extends React.Component {
                         value = {this.state.password}
                         onChange = {this.changeHandler}
                     />    
-                    <button className = "signInButton">Войти</button>
+                    <button onClick={this.signInHandler} className = "signInButton">Войти</button>
                     <button className = "forgotButton">Забыли пароль?</button>
-                    <button className = "signUpButton">Зарегистрироватся</button>            
-                </form>
+                    <button onClick={event => this.props.activePanelHandler("RegForm")} className = "signUpButton">Зарегистрироватся</button>            
+                </div>
             </div>
         )
     }
