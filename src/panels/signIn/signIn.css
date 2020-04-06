@@ -1,0 +1,64 @@
+.formRow {
+    width: 85%;
+    max-width: 500px;
+    display: block;
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+.textField {
+    margin: 0 0 3%;
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 17px;
+    text-align: center;
+  }
+
+  .signInButton {
+    background: #45aba6;
+    padding: 11px 50px;
+    border-color: #45aba6;
+    color: #fff;
+    text-align: center;
+    margin-right: 5%;
+    margin-top: 1rem;
+    font-size: 15px;
+    border: 1px solid #45aba6;
+    border-radius: 20px;
+    width: 35%;
+    cursor: pointer;
+  }
+
+  .forgotButton {
+    background: #fff;
+    padding: 11px 50px;
+    border-color: #fff;
+    color: #45aba6;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 15px;
+    border: 1px solid #45aba6;
+    border-radius: 20px;
+    width: 60%;
+
+    cursor: pointer;
+  }
+
+  .signUpButton {
+    background: #45aba6;
+    padding: 11px 50px;
+    border-color: #45aba6;
+    color: #fff;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 15px;
+    border: 1px solid #45aba6;
+    border-radius: 20px;
+    width: 100%;
+    cursor: pointer;
+  }
