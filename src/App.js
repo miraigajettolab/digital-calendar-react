@@ -1,6 +1,7 @@
 import React from "react"
 import SignIn from "./panels/signIn/SignIn"
 import RegForm from "./panels/regForm/RegForm"
+import Stub from "./panels/stub/Stub"
 import "./global.css"
 
 class App extends React.Component {
@@ -22,6 +23,8 @@ class App extends React.Component {
                 return <SignIn activePanelHandler = {this.activePanelHandler}/>
             case "RegForm":
                 return <RegForm activePanelHandler = {this.activePanelHandler}/>
+            case "Stub":
+                return <Stub activePanelHandler = {this.activePanelHandler}/>
             default:
         }
     }

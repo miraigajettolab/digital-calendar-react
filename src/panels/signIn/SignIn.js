@@ -46,7 +46,7 @@ class SignIn extends React.Component {
                         onChange = {this.changeHandler}
                     />    
                     <button onClick={this.signInHandler} className = "signInButton">Войти</button>
-                    <button className = "forgotButton">Забыли пароль?</button>
+                    <button onClick={event => this.props.activePanelHandler("Stub")} className = "forgotButton">Забыли пароль?</button>
                     <button onClick={event => this.props.activePanelHandler("RegForm")} className = "signUpButton">Зарегистрироватся</button>            
                 </div>
             </div>
