@@ -4,9 +4,22 @@ import * as firebase from "firebase"
 
 class Default extends React.Component {
     constructor() {
-    super()
-        this.state = {}
+        super()
+
+        this.state = {
+            user: ""
+        }
         this.signOutHandler = this.signOutHandler.bind(this)
+    }
+
+    componentDidMount(){
+        const firestore = firebase.firestore();
+        const userRef = firestore.doc("users/"+ firebase.auth().currentUser.email)
+        userRef.get().then((doc) => {
+            if(doc && doc.exists){
+                this.setState({user:doc.data()})
+            }
+        }).catch(e => console.log(e.message))
     }
 
     signOutHandler() {
@@ -14,12 +27,14 @@ class Default extends React.Component {
         this.props.activePanelHandler("SignIn")
     }
 
+
     render() {
         return (
             <div className="contentColumn">
                 <div className="stubRow">
-                    <h3>Авторизирован как {firebase.auth().currentUser.email}</h3>
+                    <h3>Авторизирован как: {this.state.user.fullName}, {this.state.user.title}</h3>
                     <button onClick={this.signOutHandler} className = "signOutButton">Выйти</button>
+                    {console.log(this.state)}
                 </div>
             </div>
         )

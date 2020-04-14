@@ -28,11 +28,28 @@ class RegForm extends React.Component {
             type === "checkbox" ? this.setState({[name]:checked}) : this.setState({[name]:value})
         }
 
+        //TODO: refactor this method with better nested callbacks as current solution may cause problems
         signUpHandler() {
+            const firestore = firebase.firestore();
+            const docRef = firestore.doc("users/"+ this.state.email)
+
             const auth = firebase.auth();
             const promise = auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
             promise
-            .then(user => this.props.activePanelHandler("Default"))
+            .then(
+                docRef.set({
+                    email: this.state.email,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    patronym: this.state.patronym,
+                    fullName: this.state.lastName + " " + this.state.firstName + " " + this.state.patronym,
+                    title: this.state.title,
+                    isEventManager: this.state.isEventManager})
+                .then(
+                    user => this.props.activePanelHandler("Default")
+                )
+                .catch(e => console.log(e.message))
+            )
             .catch(e => console.log(e.message))          
         }
 

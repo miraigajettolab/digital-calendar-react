@@ -1,18 +1,18 @@
 .stubButton {
     width: 85%;
-    max-width: 500px;
+    max-width: 300px;
     display: block;
     margin-top: 3rem;
     margin-left: auto;
     margin-right: auto;
 
     background: #fff;
-    padding: 11px 50px;
+    padding: 11px;
     border-color: #fff;
-    color: #45aba6;
+    color: #EA6461;
     text-align: center;
     font-size: 15px;
-    border: 1px solid #45aba6;
+    border: 1px solid #EA6461;
     border-radius: 20px;
     cursor: pointer;
   }

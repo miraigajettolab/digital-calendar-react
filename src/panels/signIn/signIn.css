@@ -20,44 +20,44 @@
   }
 
   .signInButton {
-    background: #45aba6;
-    padding: 11px 50px;
-    border-color: #45aba6;
+    background: #EA6461;
+    padding: 11px;
+    border-color: #EA6461;
     color: #fff;
     text-align: center;
     margin-right: 5%;
     margin-top: 1rem;
     font-size: 15px;
-    border: 1px solid #45aba6;
+    border: 1px solid #EA6461;
     border-radius: 20px;
-    width: 35%;
+    width: 30%;
     cursor: pointer;
   }
 
   .forgotButton {
     background: #fff;
-    padding: 11px 50px;
+    padding: 11px;
     border-color: #fff;
-    color: #45aba6;
+    color: #EA6461;
     text-align: center;
     margin-top: 1rem;
     font-size: 15px;
-    border: 1px solid #45aba6;
+    border: 1px solid #EA6461;
     border-radius: 20px;
-    width: 60%;
+    width: 65%;
 
     cursor: pointer;
   }
 
   .signUpButton {
-    background: #45aba6;
-    padding: 11px 50px;
-    border-color: #45aba6;
+    background: #EA6461;
+    padding: 11px;
+    border-color: #EA6461;
     color: #fff;
     text-align: center;
     margin-top: 1rem;
     font-size: 15px;
-    border: 1px solid #45aba6;
+    border: 1px solid #EA6461;
     border-radius: 20px;
     width: 100%;
     cursor: pointer;
