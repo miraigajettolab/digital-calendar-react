@@ -11,7 +11,7 @@ exports.addToUsersIndex = functions.firestore.document('users/{userId}')
     .onCreate(snapshot => {
         const data = snapshot.data();
         const objectID = snapshot.id;
-        return index.addObject({...data, objectID});
+        return index.saveObject({...data, objectID});
     });
 
 exports.updateUsersIndex = functions.firestore.document('users/{userId}')

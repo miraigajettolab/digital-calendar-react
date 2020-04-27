@@ -4,7 +4,7 @@ import "./loading.css"
 class Loading extends React.Component {
     render() {
         return(
-            <div class="loader">Loading...</div>
+            <div className="loader">Loading...</div>
         )
     }
 }
