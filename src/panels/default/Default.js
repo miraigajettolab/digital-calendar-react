@@ -37,10 +37,8 @@ class Default extends React.Component {
                 <div className="stubRow">
                     {this.state.user && <h3>Авторизирован как: {this.state.user.fullName} - {this.state.user.title}</h3>}
                     <hr></hr>
-                    <div>
-                        <button onClick={this.signOutHandler} className = "addWorkerButton">Поручить</button>
-                    </div>
                     <button onClick={this.signOutHandler} className = "signOutButton">Выйти</button>
+                    <hr></hr>
                     <AddEvent/>
                 </div>
             </div>

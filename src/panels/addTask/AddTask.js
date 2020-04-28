@@ -8,6 +8,8 @@ import "algolia-react-autocomplete/build/css/index.css";
 class AddTask extends React.Component {
     constructor(props) {
       super(props);
+      console.log(this.props)
+
 
       this.client = algoliasearch(
         "3VHBZCM9SW",
@@ -25,29 +27,30 @@ class AddTask extends React.Component {
 
       this.state = { 
         assignedWorkers: [],
-        taskName: "",
-        taskDescription: "" 
       };
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleSearchChange = this.handleSearchChange.bind(this)
       this.handleChange = this.handleChange.bind(this);
+      this.addClick = this.addClick.bind(this);
+      this.removeClick = this.removeClick.bind(this);
     }
 
-    handleChange(event) {
+    handleChange(event) { //calling  function
       const name = event.target.name
       const value = event.target.value
       this.props.onChange(this.props.id, name, value)
   }
     
     createUI(){
-       return this.state.assignedWorkers.map((el, i) => 
-           <div key={i}>
-                <Autocomplete
+       return this.props.assignedWorkers.map((el, i) => 
+           <div className="autocompleteRow" key={i}>
+             <div className="autocomleteColumn">
+             <Autocomplete
                         indexes={this.indexes}
                         onSelectionChange={this.handleSearchChange.bind(this, i)}
                         >
                     
-                       <input
+                       <input 
                             onSubmit={e => { e.preventDefault()}}
                             key="input"
                             type="search"
@@ -58,29 +61,34 @@ class AddTask extends React.Component {
                             autoComplete="off"
                             onChange={this.handleSearchChange.bind(this, i)}
                         />
-                    
                 </Autocomplete>
+              </div>
+              <div className="autocomleteColumn">
+                <input className="deleteButton" type='button' value='x' onClick={this.removeClick.bind(this, i)}/>
+              </div>
               <p>{el||''}</p>
-              <input type='button' value='убрать' onClick={this.removeClick.bind(this, i)}/>
            </div>          
        )
     }
   
-    handleSearchChange(i, event) {
+    handleSearchChange(i, event) { //calling external function
        //let assignedWorkers = [...this.state.assignedWorkers];
        //assignedWorkers[i] = event.email
        this.props.onSearchChange(this.props.id, i, event)
        //this.setState({ assignedWorkers });
     }
     
-    addClick(){
-      this.setState(prevState => ({ assignedWorkers: [...prevState.assignedWorkers, '']}))
+    addClick(){ //calling external function
+      //this.setState(prevState => ({ assignedWorkers: [...prevState.assignedWorkers, '']}))
+      this.props.onAddClick(this.props.id)
     }
     
-    removeClick(i){
-       let assignedWorkers = [...this.state.assignedWorkers];
-       assignedWorkers.splice(i,1);
-       this.setState({ assignedWorkers });
+    removeClick(i){ //calling external function
+       //let assignedWorkers = [...this.state.assignedWorkers];
+       //assignedWorkers.splice(i,1);
+       //this.setState({ assignedWorkers });
+       console.log(this.props)
+       this.props.onRemoveClick(this.props.id, i)
     }
   
     handleSubmit(event) {
@@ -109,7 +117,7 @@ class AddTask extends React.Component {
               onChange = {this.handleChange}
             />
             {this.createUI()}        
-            <input type='button' value='Добавить исполнителя' onClick={this.addClick.bind(this)}/>
+            <input className="genericButton" type='button' value='Добавить исполнителя' onClick={this.addClick.bind(this)}/>
         </div>
       );
     }

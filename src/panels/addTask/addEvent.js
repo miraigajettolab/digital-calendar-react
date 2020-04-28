@@ -1,8 +1,7 @@
 import React from "react"
 import "./addTask.css"
 import AddTask from "./AddTask"
-import { fireEvent } from "@testing-library/react";
-import update from 'react-addons-update';
+
 
 class AddEvent extends React.Component {
     constructor(props) {
@@ -15,6 +14,8 @@ class AddEvent extends React.Component {
       this.changeHandler = this.changeHandler.bind(this);
       this.handleTaskChange = this.handleTaskChange.bind(this);
       this.handleSearchChange = this.handleSearchChange.bind(this);
+      this.taskAddClick = this.taskAddClick.bind(this);
+      this.taskRemoveClick = this.taskRemoveClick(this);
     }
 
     changeHandler(event) {
@@ -23,29 +24,82 @@ class AddEvent extends React.Component {
       this.setState({[name]:value})
     }
 
+
+    //external functions for AddTask
     handleTaskChange(taskId, name, value){
-        this.setState(update(this.state, {
-            tasks: {
-                [taskId]: {
-                    $set: {}
-                }
-            }
-        }));
+      let a = this.state.tasks.slice(); //creates the clone of the state
+      let obj = a[taskId];
+      if(obj) {
+        obj[name] = value
+      }
+      else  {
+        obj = {}
+        obj[name] = value
+      }
+      a[taskId] = obj;
+      this.setState({"tasks": a});
     }
 
     handleSearchChange(taskId, i, event){
-       let field = "this.state.tasks[" + taskId + "].assignedWorkers";
-       let assignedWorkers = [...field]
+      let a = this.state.tasks.slice(); //creates the clone of the state
+      let obj = a[taskId];
+      if(!obj) {
+        obj = {}
+      
+      }
+      if(!obj.assignedWorkers){
+        obj.assignedWorkers = [];
+      }
+
+
+       let assignedWorkers = [...obj.assignedWorkers];
        assignedWorkers[i] = event.email
-       this.setState(prevState => {
-           let field = "this.state.tasks[" + taskId + "].assignedWorkers"
-            return {[field]:assignedWorkers}
-        })
+       obj.assignedWorkers = assignedWorkers
+
+       a[taskId] = obj;
+       this.setState({"tasks": a});
     }
+    taskAddClick(taskId){
+      console.log("adding stuff")
+      let a = this.state.tasks.slice(); //creates the clone of the state
+      let obj = a[taskId];
+      if(!obj) {
+        obj = {}
+      
+      }
+      if(!obj.assignedWorkers){
+        obj.assignedWorkers = [];
+      }
+      obj.assignedWorkers = [...obj.assignedWorkers, '']
+
+      a[taskId] = obj;
+      this.setState({"tasks": a});
+    }
+    
+    taskRemoveClick(taskId, i){
+      console.log("removing stuff")
+      let a = this.state.tasks.slice(); //creates the clone of the state
+      let obj = a[taskId];
+      if(!obj) {
+        obj = {}
+      
+      }
+      if(!obj.assignedWorkers){
+        obj.assignedWorkers = [];
+      }
+       let assignedWorkers = [...obj.assignedWorkers];
+       assignedWorkers.splice(i,1);
+       obj.assignedWorkers = assignedWorkers
+
+       a[taskId] = obj;
+       this.setState({"tasks": a});
+    }
+  
 
 
     
     createUI(){
+      let a = []
        return this.state.tasks.map((el, i) => 
            <div key={i}>
             <AddTask
@@ -53,9 +107,12 @@ class AddEvent extends React.Component {
                id={i}
                onChange={this.handleTaskChange}
                onSearchChange={this.handleSearchChange}
-               value={this.state[i]}/>
-              <p>{el||''}</p>
-              <input type='button' value='убрать подзадачу' onClick={this.removeClick.bind(this, i)}/>
+               onAddClick={this.taskAddClick}
+               onRemoveClick={this.taskRemoveClick}
+               taskName={this.state.tasks[i].taskName}
+               taskDescription={this.state.tasks[i].taskDescription}
+               assignedWorkers={this.state.tasks[i].assignedWorkers? this.state.tasks[i].assignedWorkers : a}/>
+              <input className="genericButton" type='button' value='убрать подзадачу' onClick={this.removeClick.bind(this, i)}/>
            </div>          
        )
     }
@@ -86,8 +143,8 @@ class AddEvent extends React.Component {
         <form onSubmit={this.handleSubmit}>
 
             {this.createUI()}        
-            <input type='button' value='Добавить подзадачу' onClick={this.addClick.bind(this)}/>
-            <input type="submit" value="Сохранить" />
+            <input className="genericButton" type='button' value='Добавить подзадачу' onClick={this.addClick.bind(this)}/>
+            <input className="genericButton" type="submit" value="Сохранить" />
         </form>
       );
     }
