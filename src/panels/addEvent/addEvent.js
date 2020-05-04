@@ -112,7 +112,7 @@ class AddEvent extends React.Component {
                taskName={this.state.tasks[i].taskName}
                taskDescription={this.state.tasks[i].taskDescription}
                assignedWorkers={this.state.tasks[i].assignedWorkers? this.state.tasks[i].assignedWorkers : a}/>
-              <input className="addTaskButton" type='button' value='убрать задачу' onClick={this.removeClick.bind(this, i)}/>
+              <input className="removeTaskButton" type='button' value='убрать задачу' onClick={this.removeClick.bind(this, i)}/>
            </div>          
        )
     }
@@ -159,7 +159,7 @@ class AddEvent extends React.Component {
               onChange = {this.handleChange}
             />
             {this.createUI()}        
-            <input className="removeTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
+            <input className="addTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
             <input className="submitButton" type="submit" value="Сохранить" />
         </form>
       );
