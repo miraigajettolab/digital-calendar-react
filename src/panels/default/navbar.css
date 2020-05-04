@@ -1,0 +1,26 @@
+.signOutButton {
+  width: 100%;
+  max-width: 200px;
+  background: #fff;
+  border-color: #D70016;
+  color: #D70016;
+  text-align: center;
+  font-size: 15px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  }
+  .topnav {
+    overflow: hidden;
+    background-color: #D70016;
+    margin-bottom: 10px;
+  }
+  .topnav a {
+    float: right;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }

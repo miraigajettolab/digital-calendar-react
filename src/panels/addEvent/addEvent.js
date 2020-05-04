@@ -112,7 +112,7 @@ class AddEvent extends React.Component {
                taskName={this.state.tasks[i].taskName}
                taskDescription={this.state.tasks[i].taskDescription}
                assignedWorkers={this.state.tasks[i].assignedWorkers? this.state.tasks[i].assignedWorkers : a}/>
-              <input className="genericButton" type='button' value='убрать подзадачу' onClick={this.removeClick.bind(this, i)}/>
+              <input className="addTaskButton" type='button' value='убрать задачу' onClick={this.removeClick.bind(this, i)}/>
            </div>          
        )
     }
@@ -141,10 +141,26 @@ class AddEvent extends React.Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-
+             <input 
+              className = "eventTitle"
+              type = "text"
+              placeholder = "Заголовок события"
+              name = "taskName"
+              value = {this.props.taskName}
+              onChange = {this.handleChange}
+            />
+            <textarea 
+              className = "eventDescription"
+              rows="4"
+              cols="50"
+              placeholder = "Описание события"
+              name = "taskDescription"
+              value = {this.props.taskDescription}
+              onChange = {this.handleChange}
+            />
             {this.createUI()}        
-            <input className="genericButton" type='button' value='Добавить подзадачу' onClick={this.addClick.bind(this)}/>
-            <input className="genericButton" type="submit" value="Сохранить" />
+            <input className="removeTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
+            <input className="submitButton" type="submit" value="Сохранить" />
         </form>
       );
     }

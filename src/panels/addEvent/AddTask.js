@@ -64,7 +64,7 @@ class AddTask extends React.Component {
                 </Autocomplete>
               </div>
               <div className="autocomleteColumn">
-                <input className="deleteButton" type='button' value='x' onClick={this.removeClick.bind(this, i)}/>
+                <input className="removeWorkerButton" type='button' value='x' onClick={this.removeClick.bind(this, i)}/>
               </div>
               <p>{el||''}</p>
            </div>          
@@ -100,7 +100,7 @@ class AddTask extends React.Component {
       return (
         <div>
             <input 
-              className = "textField"
+              className = "taskTitle"
               type = "text"
               placeholder = "Заголовок задачи"
               name = "taskName"
@@ -108,16 +108,16 @@ class AddTask extends React.Component {
               onChange = {this.handleChange}
             />
             <textarea 
-              className = "textArea"
+              className = "taskDescription"
               rows="4"
               cols="50"
-              placeholder = "Заголовок задачи"
+              placeholder = "Описание задачи"
               name = "taskDescription"
               value = {this.props.taskDescription}
               onChange = {this.handleChange}
             />
             {this.createUI()}        
-            <input className="genericButton" type='button' value='Добавить исполнителя' onClick={this.addClick.bind(this)}/>
+            <input className="addWorkerButton" type='button' value='Добавить исполнителя' onClick={this.addClick.bind(this)}/>
         </div>
       );
     }
