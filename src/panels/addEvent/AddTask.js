@@ -2,7 +2,7 @@ import React from "react"
 import "./addTask.css"
 
 import algoliasearch from "algoliasearch";
-import Autocomplete from "algolia-react-autocomplete";
+import CustomAutocomplete from "./Autocomplete/CustomAutocomplete";
 import "algolia-react-autocomplete/build/css/index.css";
 
 class AddTask extends React.Component {
@@ -27,9 +27,11 @@ class AddTask extends React.Component {
 
       this.state = { 
         assignedWorkers: [],
+        currentSelection: ""
       };
       this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleSearchChange = this.handleSearchChange.bind(this)
+      this.handleSearchChange = this.handleSearchChange.bind(this);
+      this.handleWorkerAppend = this.handleWorkerAppend.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.addClick = this.addClick.bind(this);
       this.removeClick = this.removeClick.bind(this);
@@ -41,52 +43,36 @@ class AddTask extends React.Component {
       this.props.onChange(this.props.id, name, value)
   }
     
+
+  //
+
     createUI(){
        return this.props.assignedWorkers.map((el, i) => 
-           <div className="autocompleteRow" key={i}>
-             <div className="autocomleteColumn">
-             <Autocomplete
-                        indexes={this.indexes}
-                        onSelectionChange={this.handleSearchChange.bind(this, i)}
-                        >
-                    
-                       <input 
-                            onSubmit={e => { e.preventDefault()}}
-                            key="input"
-                            type="search"
-                            id="aa-search-input"
-                            className="aa-input-search"
-                            placeholder={el||"Поиск исполнителей..."}
-                            name="search"
-                            autoComplete="off"
-                            onChange={this.handleSearchChange.bind(this, i)}
-                        />
-                </Autocomplete>
-              </div>
-              <div className="autocomleteColumn">
+           <div className="workerRow" key={i}>
+             <div className="workerColumn">
+               <h3>{el||''}</h3>
                 <input className="removeWorkerButton" type='button' value='x' onClick={this.removeClick.bind(this, i)}/>
               </div>
-              <p>{el||''}</p>
            </div>          
        )
     }
+
+    handleWorkerAppend(){
+      if(this.state.currentSelection && !this.props.assignedWorkers.includes(this.state.currentSelection)) {
+        this.props.onSearchChange(this.props.id, this.state.currentSelection)
+      }
+    }
   
-    handleSearchChange(i, event) { //calling external function
-       //let assignedWorkers = [...this.state.assignedWorkers];
-       //assignedWorkers[i] = event.email
-       this.props.onSearchChange(this.props.id, i, event)
-       //this.setState({ assignedWorkers });
+    handleSearchChange(event) { //calling external function
+       let currentSelection = event.email
+       this.setState({ currentSelection });
     }
     
     addClick(){ //calling external function
-      //this.setState(prevState => ({ assignedWorkers: [...prevState.assignedWorkers, '']}))
       this.props.onAddClick(this.props.id)
     }
     
     removeClick(i){ //calling external function
-       //let assignedWorkers = [...this.state.assignedWorkers];
-       //assignedWorkers.splice(i,1);
-       //this.setState({ assignedWorkers });
        console.log(this.props)
        this.props.onRemoveClick(this.props.id, i)
     }
@@ -97,6 +83,7 @@ class AddTask extends React.Component {
     }
   
     render() {
+      console.log(this.props.assignedWorkers)
       return (
         <div>
             <input 
@@ -116,8 +103,24 @@ class AddTask extends React.Component {
               value = {this.props.taskDescription}
               onChange = {this.handleChange}
             />
-            {this.createUI()}        
-            <input className="addWorkerButton" type='button' value='Добавить исполнителя' onClick={this.addClick.bind(this)}/>
+            {this.createUI()}
+            <CustomAutocomplete
+                        indexes={this.indexes}
+                        onSelectionChange={this.handleSearchChange.bind(this)}
+                        >
+                       <input 
+                            onSubmit={e => { e.preventDefault()}}
+                            key="input"
+                            type="search"
+                            id="aa-search-input"
+                            className="aa-input-search"
+                            placeholder={"Поиск исполнителей..."}
+                            name="search"
+                            autoComplete="off"
+                            onChange={this.handleSearchChange.bind(this)}
+                        />
+                </CustomAutocomplete>        
+            <input className="addWorkerButton" type='button' value='Добавить исполнителя' onClick={this.handleWorkerAppend.bind(this)}/>
         </div>
       );
     }

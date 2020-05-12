@@ -10,14 +10,21 @@
   border-radius: 20px;
   cursor: pointer;
   }
+
   .topnav {
     overflow: hidden;
     background-color: #D70016;
-    position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;
+    /* position: absolute; */
+    position: fixed;
     left: 0;
     top: 0;
+    z-index: 120;
+    direction: ltr
   }
+
   .topnav a {
     float: right;
     display: block;

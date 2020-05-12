@@ -15,7 +15,7 @@ class AddEvent extends React.Component {
       this.handleTaskChange = this.handleTaskChange.bind(this);
       this.handleSearchChange = this.handleSearchChange.bind(this);
       this.taskAddClick = this.taskAddClick.bind(this);
-      this.taskRemoveClick = this.taskRemoveClick(this);
+      this.taskRemoveClick = this.taskRemoveClick.bind(this);
     }
 
     changeHandler(event) {
@@ -40,7 +40,7 @@ class AddEvent extends React.Component {
       this.setState({"tasks": a});
     }
 
-    handleSearchChange(taskId, i, event){
+    handleSearchChange(taskId, event){
       let a = this.state.tasks.slice(); //creates the clone of the state
       let obj = a[taskId];
       if(!obj) {
@@ -53,7 +53,7 @@ class AddEvent extends React.Component {
 
 
        let assignedWorkers = [...obj.assignedWorkers];
-       assignedWorkers[i] = event.email
+       assignedWorkers.push(event);
        obj.assignedWorkers = assignedWorkers
 
        a[taskId] = obj;
@@ -116,12 +116,6 @@ class AddEvent extends React.Component {
            </div>          
        )
     }
-  
-    handleChange(i, event) {
-       let tasks = [...this.state.tasks];
-       tasks[i] = event.email
-       this.setState({ tasks });
-    }
     
     addClick(){
       this.setState(prevState => ({ tasks: [...prevState.tasks, '']}))
@@ -146,8 +140,8 @@ class AddEvent extends React.Component {
               type = "text"
               placeholder = "Заголовок события"
               name = "taskName"
-              value = {this.props.taskName}
-              onChange = {this.handleChange}
+              value = {this.state.taskName}
+              onChange = {this.changeHandler}
             />
             <textarea 
               className = "eventDescription"
@@ -155,8 +149,8 @@ class AddEvent extends React.Component {
               cols="50"
               placeholder = "Описание события"
               name = "taskDescription"
-              value = {this.props.taskDescription}
-              onChange = {this.handleChange}
+              value = {this.state.taskDescription}
+              onChange = {this.changeHandler}
             />
             {this.createUI()}        
             <input className="addTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
