@@ -1,52 +1,179 @@
 .genericButton {
-    width: 85%;
-    max-width: 200px;
-
-    background: #EA6461;
-    padding: 11px;
-    border-color: #fff;
-    color: #fff;
-    text-align: center;
-    font-size: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #EA6461;
-    border-radius: 20px;
-    cursor: pointer;
-  }
+  width: 85%;
+  max-width: 200px;
+  background: #D70016;
+  padding: 11px;
+  border-color: #fff;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #D70016;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
 .forceInline {
-    width: 600px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+  width: 600px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .autocompleteInput{
 }
 
-  .deleteButton {
+.deleteButton {
+  background: #D70016;
+  border-color: #fff;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  border: 1px solid #D70016;
+  border-radius: 20px;
+  cursor: pointer;
 
-    background: #EA6461;
-    border-color: #fff;
-    color: #fff;
-    text-align: center;
-    font-size: 15px;
-    border: 1px solid #EA6461;
-    border-radius: 20px;
-    cursor: pointer;
-  }
+}
 
-  /* Create two equal columns that floats next to each other */
-.workerColumn {
-    float: left;
-    width: 50%;
-    padding: 10px;
-  }
-  
-  /* Clear floats after the columns */
-  .workerRow:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+/* Create two equal columns that floats next to each other */
+.autocompleteColumn {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.autocompleteRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.removeWorkerButton {
+  background: #D70016;
+  border-color: #fff;
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  border: 1px solid #D70016;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 76%;
+}
+
+.addWorkerButtonAndremoveTaskButton{
+margin: 0 0 0.3%;
+background: #fff;
+border-color: #D70016;
+color: #D70016;
+text-align: center;
+font-size: 12px;
+border: 1px solid #D70016;
+border-radius: 20px;
+cursor: pointer;
+width: 54.5%;
+margin-left: 25%;
+text-align: center;
+padding: 7px;
+border-radius: 20px;
+}
+.addTaskButton{
+background: #fff;
+border-color: #D70016;
+color: #D70016;
+text-align: center;
+font-size: 12px;
+border: 1px solid #D70016;
+border-radius: 20px;
+cursor: pointer;
+min-width: 29.5%;
+margin-left: 25%;
+margin-right: 1%;
+padding: 7px;
+border-radius: 20px;
+}
+.submitButton{
+background: #D70016;
+border-color: #fff;
+color: #fff;
+text-align: center;
+font-size: 12px;
+border: 1px solid #D70016;
+border-radius: 20px;
+cursor: pointer;
+min-width: 24%;
+padding: 7px;
+border-radius: 20px;
+}
+
+.aa-suggestions-category {
+
+}
+
+.eventTitle{
+margin: 0 0 1%;
+position: static;
+width: 50%;
+padding: 15px;
+border-radius: 20px;
+border: 1px solid #ccc;
+font-size: 14px;
+text-align: center;
+margin-left: 25%;
+margin-right: 25%;
+}
+.eventDescription{
+min-height: 40px;
+max-height: 200px;
+resize: vertical;
+margin: 0 0 1%;
+position: static;
+padding: 15px;
+border-radius: 20px;
+border: 1px solid #ccc;
+font-size: 14px;
+text-align: center;
+width: 50%;
+margin-left: 25%;
+margin-right: 25%;
+}
+.taskTitle{
+margin: 0 0 1%;
+position: static;
+width: 50%;
+padding: 15px;
+border-radius: 20px;
+border: 1px solid #ccc;
+font-size: 14px;
+text-align: center;
+margin-left: 25%;
+margin-right: 25%;
+}
+.taskDescription{
+min-height: 40px;
+max-height: 200px;
+resize: vertical;
+margin: 0 0 1%;
+position: static;
+padding: 15px;
+border-radius: 20px;
+border: 1px solid #ccc;
+font-size: 14px;
+text-align: center;
+width: 50%;
+margin-left: 25%;
+margin-right: 25%;
+}
+.aa-input-search {
+max-width: 55%;
+position: static;
+
+border-radius: 20px;
+border: 1px solid #ccc;
+font-size: 14px;
+text-align: center;
+margin-left: 25%;
+}

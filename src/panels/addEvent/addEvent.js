@@ -1,13 +1,16 @@
 import React from "react"
 import "./addTask.css"
 import AddTask from "./AddTask"
+import * as firebase from "firebase"
 
 
 class AddEvent extends React.Component {
     constructor(props) {
       super(props);
 
-      this.state = { 
+      this.state = {
+        eventTitle: "",
+        eventDescription: "",
         tasks: [],
       };
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -129,9 +132,22 @@ class AddEvent extends React.Component {
   
     handleSubmit(event) {
       console.log(this.state)
-      event.preventDefault();
+
+      const firestore = firebase.firestore();
+      const docRef = firestore.doc("events/"+ 11)
+
+        docRef.set({
+            eventTitle: this.state.eventTitle,
+            eventDescription: this.state.eventDescription,
+            tasks: this.state.tasks})
+        .then(
+            //user => this.props.activePanelHandler("Default")
+        )
+        .catch(e => console.log(e.message))       
+
+      event.preventDefault(); //GET RID OF IT, WHEN YOU WILL CHANGE ACTIVE PANELS
     }
-  
+
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
@@ -139,7 +155,7 @@ class AddEvent extends React.Component {
               className = "eventTitle"
               type = "text"
               placeholder = "Заголовок события"
-              name = "taskName"
+              name = "eventTitle"
               value = {this.state.taskName}
               onChange = {this.changeHandler}
             />
@@ -148,7 +164,7 @@ class AddEvent extends React.Component {
               rows="4"
               cols="50"
               placeholder = "Описание события"
-              name = "taskDescription"
+              name = "eventDescription"
               value = {this.state.taskDescription}
               onChange = {this.changeHandler}
             />
