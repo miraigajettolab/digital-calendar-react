@@ -32,6 +32,7 @@ class RegForm extends React.Component {
         signUpHandler() {
             const firestore = firebase.firestore();
             const docRef = firestore.doc("users/"+ this.state.email)
+            const tasksRef = firestore.doc("user_tasks/"+ this.state.email)
 
             const auth = firebase.auth();
             const promise = auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -45,6 +46,9 @@ class RegForm extends React.Component {
                     fullName: this.state.lastName + " " + this.state.firstName + " " + this.state.patronym,
                     title: this.state.title,
                     isEventManager: this.state.isEventManager})
+                .then(
+                    tasksRef.set({}) //creating empty doc for tasks
+                )
                 .then(
                     user => this.props.activePanelHandler("Default")
                 )

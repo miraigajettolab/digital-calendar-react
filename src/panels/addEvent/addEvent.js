@@ -134,12 +134,12 @@ class AddEvent extends React.Component {
       console.log(this.state)
 
       const firestore = firebase.firestore();
-      const docRef = firestore.doc("events/"+ 11)
-
-        docRef.set({
+      
+      firestore.collection("events").add({
             eventTitle: this.state.eventTitle,
             eventDescription: this.state.eventDescription,
-            tasks: this.state.tasks})
+            tasks: this.state.tasks
+      })
         .then(
             //user => this.props.activePanelHandler("Default")
         )
