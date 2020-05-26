@@ -1,0 +1,161 @@
+
+
+.navbar {
+  overflow: hidden;
+  background-color: #ff685d;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar a:hover {
+  background: #f2f2f2;
+  color: #ff685d;
+}
+
+.monthname
+{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-size: 35pt;
+  font-weight: 700;
+  color: #262626;
+}
+
+.nextarrow {
+  position: fixed;
+  top: 12%;
+  right: 5%;
+}
+.nextarrow:hover {
+    filter: brightness(75%);
+}
+.prevarrow {
+  position: fixed;
+  top: 12%;
+  left: 5%;
+  transform: rotate(180deg);
+}
+.prevarrow:hover {
+    filter: brightness(75%);
+}
+.backarrow {
+  position: fixed;
+  top: 12%;
+  left: 10%;
+  transform: rotate(270deg);
+}
+.backarrow:hover {
+    filter: brightness(75%);
+}
+.plus {
+  position: fixed;
+  top: 12%;
+  right: 10%;
+}
+.plus:hover {
+    filter: brightness(75%);
+}
+
+.left {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.right {
+  position: absolute;
+  top: 24%;
+  left: 50%;
+}
+
+.eventslist::-webkit-scrollbar {
+    display: none;
+}
+
+.eventlist {
+    -ms-overflow-style: none;
+}
+
+.eventslist {
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.eventslist li {
+  list-style-type: none;
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-right: 50px;
+  margin-left: -25px;
+}
+
+.eventslist li:nth-child(odd) {
+  background: #ffd4d1;
+}
+.eventslist li:nth-child(even) {
+  background: #c5c5c5;
+}
+.eventslist li:hover {
+  filter: brightness(90%);
+}
+
+.monthcalendar
+ {
+   font-size: 35pt;
+   width: 450px;
+   height: auto;
+   background: #fff;
+   box-sizing: border-box;
+ }
+.monthcalendar .date
+{
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+  grid-gap: 40px;
+  box-sizing: border-box;
+}
+.monthcalendar .date div
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  color: #262626;
+}
+
+.monthcalendar .date div.day
+{
+   font-weight: 700;
+}
+
+.monthcalendar .date div.day:nth-child(6),
+.monthcalendar .date div.day:nth-child(7),
+.monthcalendar .date div.number:nth-child(7n-1),
+.monthcalendar .date div.number:nth-child(7n)
+{
+   color: #ff685d;
+}
+
+.monthcalendar .date div.number:hover
+{
+  background: #c5c5c5;
+}
