@@ -9,13 +9,14 @@
 }
 
 .aa-input-search {
-    width: 100%;
-    padding: 12px 28px 12px 12px;
-    border: 1px solid #e4e4e4;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  border: 1px solid #fce8e8;
+  font-size: 12px;
+  text-align: center;
+  max-width: 800px;
+  max-height: 20px;
+  background-color: #fce8e8;
 }
 
 .aa-dropdown-menu {

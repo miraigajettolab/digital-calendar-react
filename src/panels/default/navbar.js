@@ -11,7 +11,10 @@ class TopNavBar extends React.Component {
           };
 
         this.signOutHandler = this.signOutHandler.bind(this)
+
     }
+
+
 
     signOutHandler() {
         firebase.auth().signOut()
@@ -31,10 +34,18 @@ class TopNavBar extends React.Component {
         }
 
         return (
-            <div class="topnav">
-              <a> <button onClick={this.signOutHandler} className = "signOutButton">Выйти</button> </a>
-              {this.state.user && <a> {this.state.user.fullName}, {this.state.user.title} </a>}
+           <nav class="topnav"><h1>Digital-календарь</h1>
+            <div  className="dropdown">
+              <button class="dropbtn">Аккаунт</button>
+                <div class="dropdown-content">
+                    {this.state.user && <a> {this.state.user.fullName}, {this.state.user.title} </a>}
+                    <button onClick={this.signOutHandler} className = "signOutButton">Выйти</button>
+                </div>
             </div>
+            </nav>
+
+
+
         )
     }
 }

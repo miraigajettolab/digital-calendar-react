@@ -168,6 +168,24 @@ class AddEvent extends React.Component {
               value = {this.state.taskDescription}
               onChange = {this.changeHandler}
             />
+            <input
+              className= "eventDate"
+              id="date"
+              type="datetime-local"
+              placeholder = "Дата и время дедлайна"
+              defaultValue="24-05-2017T10:30"
+              name = "eventDate"
+              value={this.props.taskDate}
+              onChange = {this.handleChange}
+            />
+            <input
+             className = "eventPlace"
+             type = "text"
+             placeholder = "Место события"
+             name = "eventPlace"
+             value = {this.state.taskPlace}
+             onChange = {this.changeHandler}
+           />
             {this.createUI()}        
             <input className="addTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
             <input className="submitButton" type="submit" value="Сохранить" />

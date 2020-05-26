@@ -94,6 +94,16 @@ class AddTask extends React.Component {
               value = {this.props.taskName}
               onChange = {this.handleChange}
             />
+            <input
+              className= "taskDate"
+              id="date"
+              type="datetime-local"
+              placeholder = "Дата и время дедлайна"
+              defaultValue="24-05-2017T10:30"
+              name = "taskDate"
+              value={this.props.taskDate}
+              onChange = {this.handleChange}
+            />
             <textarea 
               className = "taskDescription"
               rows="4"
