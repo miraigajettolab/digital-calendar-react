@@ -25,7 +25,8 @@ class Default extends React.Component {
               }
           }).catch(e => console.log(e.message))
       }
-      let ManageEventVar = <ManageEvent/>;
+      console.log("giving " + this.state.user.email);
+      let ManageEventVar = <ManageEvent manager={this.state.user.email}/>;
       let monthViewerVar = <MonthViewer/>
     
     return (

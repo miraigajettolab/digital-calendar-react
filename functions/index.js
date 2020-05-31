@@ -53,6 +53,7 @@ exports.addEvent = functions.region('europe-west1').firestore.document('events/{
                     eventTitle: data.eventTitle,
                     eventPlace: data.eventPlace,
                     eventDate: data.eventDate,
+                    eventManager: data.eventManager,
                     taskDescription: task.taskDescription,
                     taskName: task.taskName,
                     taskDate: task.taskDate
@@ -123,6 +124,7 @@ exports.updateEvent = functions.region('europe-west1').firestore.document('event
                     eventTitle: data.eventTitle,
                     eventPlace: data.eventPlace,
                     eventDate: data.eventDate,
+                    eventManager: data.eventManager,
                     taskDescription: task.taskDescription,
                     taskName: task.taskName,
                     taskDate: task.taskDate
@@ -195,6 +197,7 @@ exports.deleteEvent = functions.region('europe-west1').firestore.document('event
                     eventTitle: data.eventTitle,
                     eventPlace: data.eventPlace,
                     eventDate: data.eventDate,
+                    eventManager: data.eventManager,
                     taskDescription: task.taskDescription,
                     taskName: task.taskName,
                     taskDate: task.taskDate

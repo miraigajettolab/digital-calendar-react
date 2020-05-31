@@ -34,10 +34,10 @@ class TopNavBar extends React.Component {
         }
 
         return (
-           <nav class="topnav"><h1>Digital-календарь</h1>
+           <nav className="topnav"><h1>Digital-календарь</h1>
             <div  className="dropdown">
-              <button class="dropbtn">Аккаунт</button>
-                <div class="dropdown-content">
+              <button className="dropbtn">Аккаунт</button>
+                <div className="dropdown-content">
                     {this.state.user && <a> {this.state.user.fullName}, {this.state.user.title} </a>}
                     <button onClick={this.signOutHandler} className = "signOutButton">Выйти</button>
                 </div>

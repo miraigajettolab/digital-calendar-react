@@ -11,6 +11,8 @@ class ManageEvent extends React.Component {
       this.state = {
         eventTitle: "",
         eventDescription: "",
+        eventDate: "",
+        eventPlace: "",
         tasks: [],
       };
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +22,7 @@ class ManageEvent extends React.Component {
       this.taskAddClick = this.taskAddClick.bind(this);
       this.taskRemoveClick = this.taskRemoveClick.bind(this);
     }
+  
 
     changeHandler(event) {
       const name = event.target.name
@@ -138,6 +141,9 @@ class ManageEvent extends React.Component {
       firestore.collection("events").add({
             eventTitle: this.state.eventTitle,
             eventDescription: this.state.eventDescription,
+            eventDate: this.state.eventDate,
+            eventPlace: this.state.eventPlace,
+            eventManager: this.props.manager,
             tasks: this.state.tasks
       })
         .then(
@@ -156,7 +162,7 @@ class ManageEvent extends React.Component {
               type = "text"
               placeholder = "Заголовок события"
               name = "eventTitle"
-              value = {this.state.taskName}
+              value = {this.state.eventName}
               onChange = {this.changeHandler}
             />
             <textarea
@@ -165,7 +171,7 @@ class ManageEvent extends React.Component {
               cols="50"
               placeholder = "Описание события"
               name = "eventDescription"
-              value = {this.state.taskDescription}
+              value = {this.state.eventDescription}
               onChange = {this.changeHandler}
             />
             <input
@@ -175,7 +181,7 @@ class ManageEvent extends React.Component {
               placeholder = "Дата и время дедлайна"
               defaultValue="24-05-2017T10:30"
               name = "eventDate"
-              value={this.props.taskDate}
+              value={this.state.eventDate}
               onChange = {this.handleChange}
             />
             <input
@@ -183,11 +189,11 @@ class ManageEvent extends React.Component {
              type = "text"
              placeholder = "Место события"
              name = "eventPlace"
-             value = {this.state.taskPlace}
+             value = {this.state.eventPlace}
              onChange = {this.changeHandler}
            />
             {this.createUI()}
-            <input className="ManageTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
+            <input className="addTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
             <input className="submitButton" type="submit" value="Сохранить" />
         </form>
       );
