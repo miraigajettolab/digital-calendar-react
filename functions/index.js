@@ -242,4 +242,3 @@ exports.deleteEvent = functions.region('europe-west1').firestore.document('event
         })
         return 0;
     });
-

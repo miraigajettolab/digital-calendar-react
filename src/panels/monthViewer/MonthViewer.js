@@ -24,7 +24,7 @@ class MonthViewer extends React.Component {
                 {en: "November", rus: "Ноябрь" },
                 {en: "December", rus: "Декабрь" }
             ],
-            month:6, //change to current!!!!!!!!!
+            month:6, //change to current!!!!!!!!!np
             year:2020, //change to current!!!!!!!!!
             tasksList: ""
         };

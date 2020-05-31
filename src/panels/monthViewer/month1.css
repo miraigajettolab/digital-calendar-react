@@ -1,31 +1,4 @@
-
-
-.navbar {
-  overflow: hidden;
-  background-color: #ff685d;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-}
-
-.navbar a {
-  float: right;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.navbar a:hover {
-  background: #f2f2f2;
-  color: #ff685d;
-}
-
-.monthname
-{
+.monthname {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -108,7 +81,7 @@
 }
 
 .eventslist li:nth-child(odd) {
-  background: #ffd4d1;
+  background: #D70016;
 }
 .eventslist li:nth-child(even) {
   background: #c5c5c5;
@@ -152,10 +125,5 @@
 .monthcalendar .date div.number:nth-child(7n-1),
 .monthcalendar .date div.number:nth-child(7n)
 {
-   color: #ff685d;
-}
-
-.monthcalendar .date div.number:hover
-{
-  background: #c5c5c5;
+   color: #D70016;
 }

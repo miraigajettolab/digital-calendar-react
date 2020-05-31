@@ -22,11 +22,12 @@
 
 .dropbtn {
     color: white;
-    padding: 12px;
+    padding: 16px;
     font-size: 14px;
     border: none;
     cursor: pointer;
     background-color: #D70016;
+    margin-top: 4px;
 }
 
 .dropdown {
@@ -50,8 +51,7 @@ h1 {
   color: #fff;
   margin-left: 5%;
   font-size: 17px;
-  margin-top: 11px;
-
+  margin-top: 1%;
 }
 
 .dropdown-content a {

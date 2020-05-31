@@ -2,6 +2,7 @@
     width: 100%;
     font-family: sans-serif;
     position: relative;
+    margin-left: 18%;
 }
 
 .aa-input-container {
@@ -9,7 +10,7 @@
 }
 
 .aa-input-search {
-  margin-bottom: 4px;
+  margin-bottom: 0.1%;
   border-radius: 5px;
   border: 1px solid #fce8e8;
   border-radius: 20px;

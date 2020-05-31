@@ -146,10 +146,9 @@ class ManageEvent extends React.Component {
             eventManager: this.props.manager,
             tasks: this.state.tasks
       })
-        .then(
-            //user => this.props.activePanelHandler("Default")
-        )
-        .catch(e => console.log(e.message))
+      .then(function(docRef) {
+    })
+      .catch(e => console.log(e.message))
 
       event.preventDefault(); //GET RID OF IT, WHEN YOU WILL CHANGE ACTIVE PANELS
     }
