@@ -1,10 +1,10 @@
 import React from "react"
-import "./addTask.css"
-import AddTask from "./AddTask"
+import "./ManageTask.css"
+import ManageTask from "./ManageTask"
 import * as firebase from "firebase"
 
 
-class AddEvent extends React.Component {
+class ManageEvent extends React.Component {
     constructor(props) {
       super(props);
 
@@ -28,7 +28,7 @@ class AddEvent extends React.Component {
     }
 
 
-    //external functions for AddTask
+    //external functions for ManageTask
     handleTaskChange(taskId, name, value){
       let a = this.state.tasks.slice(); //creates the clone of the state
       let obj = a[taskId];
@@ -48,7 +48,7 @@ class AddEvent extends React.Component {
       let obj = a[taskId];
       if(!obj) {
         obj = {}
-      
+
       }
       if(!obj.assignedWorkers){
         obj.assignedWorkers = [];
@@ -68,7 +68,7 @@ class AddEvent extends React.Component {
       let obj = a[taskId];
       if(!obj) {
         obj = {}
-      
+
       }
       if(!obj.assignedWorkers){
         obj.assignedWorkers = [];
@@ -78,14 +78,14 @@ class AddEvent extends React.Component {
       a[taskId] = obj;
       this.setState({"tasks": a});
     }
-    
+
     taskRemoveClick(taskId, i){
       console.log("removing stuff")
       let a = this.state.tasks.slice(); //creates the clone of the state
       let obj = a[taskId];
       if(!obj) {
         obj = {}
-      
+
       }
       if(!obj.assignedWorkers){
         obj.assignedWorkers = [];
@@ -97,15 +97,15 @@ class AddEvent extends React.Component {
        a[taskId] = obj;
        this.setState({"tasks": a});
     }
-  
 
 
-    
+
+
     createUI(){
       let a = []
-       return this.state.tasks.map((el, i) => 
+       return this.state.tasks.map((el, i) =>
            <div key={i}>
-            <AddTask
+            <ManageTask
                key={i}
                id={i}
                onChange={this.handleTaskChange}
@@ -115,26 +115,26 @@ class AddEvent extends React.Component {
                taskName={this.state.tasks[i].taskName}
                taskDescription={this.state.tasks[i].taskDescription}
                assignedWorkers={this.state.tasks[i].assignedWorkers? this.state.tasks[i].assignedWorkers : a}/>
-              <input className="removeTaskButton" type='button' value='убрать задачу' onClick={this.removeClick.bind(this, i)}/>
-           </div>          
+              <input className="removeTaskButton" type='button' value='Убрать задачу' onClick={this.removeClick.bind(this, i)}/>
+           </div>
        )
     }
-    
+
     addClick(){
       this.setState(prevState => ({ tasks: [...prevState.tasks, '']}))
     }
-    
+
     removeClick(i){
        let tasks = [...this.state.tasks];
        tasks.splice(i,1);
        this.setState({ tasks });
     }
-  
+
     handleSubmit(event) {
       console.log(this.state)
 
       const firestore = firebase.firestore();
-      
+
       firestore.collection("events").add({
             eventTitle: this.state.eventTitle,
             eventDescription: this.state.eventDescription,
@@ -143,7 +143,7 @@ class AddEvent extends React.Component {
         .then(
             //user => this.props.activePanelHandler("Default")
         )
-        .catch(e => console.log(e.message))       
+        .catch(e => console.log(e.message))
 
       event.preventDefault(); //GET RID OF IT, WHEN YOU WILL CHANGE ACTIVE PANELS
     }
@@ -151,7 +151,7 @@ class AddEvent extends React.Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-             <input 
+             <input
               className = "eventTitle"
               type = "text"
               placeholder = "Заголовок события"
@@ -159,7 +159,7 @@ class AddEvent extends React.Component {
               value = {this.state.taskName}
               onChange = {this.changeHandler}
             />
-            <textarea 
+            <textarea
               className = "eventDescription"
               rows="4"
               cols="50"
@@ -186,13 +186,13 @@ class AddEvent extends React.Component {
              value = {this.state.taskPlace}
              onChange = {this.changeHandler}
            />
-            {this.createUI()}        
-            <input className="addTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
+            {this.createUI()}
+            <input className="ManageTaskButton" type='button' value='Добавить задачу' onClick={this.addClick.bind(this)}/>
             <input className="submitButton" type="submit" value="Сохранить" />
         </form>
       );
     }
   }
-  
 
-export default AddEvent
+
+export default ManageEvent

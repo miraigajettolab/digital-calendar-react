@@ -1,7 +1,7 @@
 import React from "react"
 import "./default.css"
 import TopNavBar from './navbar.js';
-import AddEvent from "../addEvent/addEvent"
+import ManageEvent from "../manageEvent/manageEvent"
 import MonthViewer from "../monthViewer/MonthViewer"
 import * as firebase from "firebase"
 
@@ -25,7 +25,7 @@ class Default extends React.Component {
               }
           }).catch(e => console.log(e.message))
       }
-      let addEventVar = <AddEvent/>;
+      let ManageEventVar = <ManageEvent/>;
       let monthViewerVar = <MonthViewer/>
     
     return (
@@ -33,7 +33,7 @@ class Default extends React.Component {
           <TopNavBar activePanelHandler = {this.props.activePanelHandler}/>
             <div className="contentColumn">
               <div className="stubRow">
-                {this.state.user.isEventManager?addEventVar:monthViewerVar}
+                {this.state.user.isEventManager?ManageEventVar:monthViewerVar}
               </div>
             </div>
       </nav>

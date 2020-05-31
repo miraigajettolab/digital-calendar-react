@@ -136,7 +136,7 @@ class RegForm extends React.Component {
                         value = {this.state.token}
                         onChange = {this.changeHandler}
                     />
-                    <button onClick={this.signUpHandler} className = "signUpButton">Зарегистрироватся</button>            
+                    <button onClick={this.signUpHandler} className = "signUpButton">Зарегистрироваться</button>            
                 </div>
             </div>
         )

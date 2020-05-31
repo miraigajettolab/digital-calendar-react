@@ -4,6 +4,7 @@ import "./month1.css"
 import MonthCalendar from "./monthCalendar/MonthCalendar"
 import arrowImg from "./arrow.png"
 import plusImg from "./plus.png"
+import * as firebase from "firebase"
 
 class MonthViewer extends React.Component {
     constructor(props) {
@@ -23,11 +24,46 @@ class MonthViewer extends React.Component {
                 {en: "November", rus: "Ноябрь" },
                 {en: "December", rus: "Декабрь" }
             ],
-            month:5, //change to current!!!!!!!!!
-            year:2020 //change to current!!!!!!!!!
+            month:6, //change to current!!!!!!!!!
+            year:2020, //change to current!!!!!!!!!
+            tasksList: ""
         };
         this.prevarrowHandler = this.prevarrowHandler.bind(this)
         this.nextarrowHandler = this.nextarrowHandler.bind(this)
+    }
+
+    componentDidMount() {
+        let tasks = [];
+        let userdata;
+
+        const firestore = firebase.firestore();
+        const authUser = firebase.auth().currentUser;
+        if(authUser){
+            const userRef = firestore.doc("users/"+ authUser.email)
+            userRef.get().then((doc) => {
+                if(doc && doc.exists){
+                    this.setState({user:doc.data()})
+                }
+            }).then( () => {
+                const docRef = firestore.collection("user_tasks").doc(this.state.user.email)
+                docRef.get().then(function(doc) { //getting user tasks
+                    if (doc.exists) {
+                        userdata = doc.data();
+                        console.log(userdata);
+                    } else {
+                        console.log("No such document!");
+                    }
+                }).then(() => {
+                    for (let i = 0; i < userdata.tasks.length; ++i ){
+                        let taskDate = userdata.tasks[i].taskDate.substring(8, 10)+"."+userdata.tasks[i].taskDate.substring(5, 7)
+                        tasks.push(<li>{taskDate + " " + userdata.tasks[i].taskName}</li>);
+                    }
+                    this.setState({tasksList:tasks})
+                    console.log(tasks);
+                })
+            }).catch(e => console.log(e.message))
+        }
+
     }
 
     prevarrowHandler() {
@@ -66,16 +102,7 @@ class MonthViewer extends React.Component {
             <div className="right">
               <div className="eventslist">
                 <ul style={{listStyle: "none"}}>
-                  <li>14.05 Молодежный форум труда</li>
-                  <li>15.05 Ярмарка вакансий в институе психолоигии</li>
-                  <li>14.05 Молодежный форум труда</li>
-                  <li>15.05 Ярмарка вакансий в институе психолоигии</li>
-                  <li>14.05 Молодежный форум труда</li>
-                  <li>15.05 Ярмарка вакансий в институе психолоигии</li>
-                  <li>14.05 Молодежный форум труда</li>
-                  <li>15.05 Ярмарка вакансий в институе психолоигии</li>
-                  <li>14.05 Молодежный форум труда</li>
-                  <li>15.05 Ярмарка вакансий в институе психолоигии</li>
+                  {this.state.tasksList}
                 </ul>
               </div>
             </div>

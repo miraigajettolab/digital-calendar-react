@@ -1,11 +1,11 @@
 import React from "react"
-import "./addTask.css"
+import "./ManageTask.css"
 
 import algoliasearch from "algoliasearch";
 import CustomAutocomplete from "./Autocomplete/CustomAutocomplete";
 import "algolia-react-autocomplete/build/css/index.css";
 
-class AddTask extends React.Component {
+class ManageTask extends React.Component {
     constructor(props) {
       super(props);
       console.log(this.props)
@@ -137,4 +137,4 @@ class AddTask extends React.Component {
   }
   
 
-export default AddTask 
+export default ManageTask 

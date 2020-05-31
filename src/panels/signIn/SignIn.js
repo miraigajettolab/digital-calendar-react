@@ -49,7 +49,7 @@ class SignIn extends React.Component {
                     />    
                     <button onClick={this.signInHandler} className = "signInButton">Войти</button>
                     <button onClick={event => this.props.activePanelHandler("Stub")} className = "forgotButton">Забыли пароль?</button>
-                    <button onClick={event => this.props.activePanelHandler("RegForm")} className = "signUpButton">Зарегистрироватся</button>            
+                    <button onClick={event => this.props.activePanelHandler("RegForm")} className = "signUpButton">Зарегистрироваться</button>            
                 </div>
             </div>
         )

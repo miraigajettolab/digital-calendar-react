@@ -6,6 +6,7 @@ class MonthCalendar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+          user: ""
           };
     }
 
@@ -13,9 +14,10 @@ class MonthCalendar extends React.Component {
         return new Date(this.props.year, this.props.month, 0).getDate(); 
     } 
 
-    render() {
+    render()
+     {
         let firstDay = new Date(this.props.month+" 1 "+this.props.year);
-        console.log(firstDay.getDay())
+        //console.log(firstDay.getDay())
         let blanks = [];
         let numBlanks = firstDay.getDay() == 0 ? 6 : firstDay.getDay()-1;
         for (let i = 0; i < numBlanks; ++i) {
@@ -23,7 +25,7 @@ class MonthCalendar extends React.Component {
         }
         let days = [];
         for (let i = 0; i < this.daysInMonth(); ++i ){
-        days.push(<div className="number">{i+1}</div>);
+            days.push(<div className="number">{i+1}</div>);
         }
         return (
             <div className="monthcalendar">

@@ -51,7 +51,11 @@ exports.addEvent = functions.region('europe-west1').firestore.document('events/{
                 let myTask = {
                     eventID: objectID,
                     eventTitle: data.eventTitle,
-                    taskName: task.taskName
+                    eventPlace: data.eventPlace,
+                    eventDate: data.eventDate,
+                    taskDescription: task.taskDescription,
+                    taskName: task.taskName,
+                    taskDate: task.taskDate
                 }
                 let workerIndex = unifiedTasks.findIndex(wt => wt.name == worker);
                 unifiedTasks[workerIndex].tasks.push(myTask)
@@ -117,7 +121,11 @@ exports.updateEvent = functions.region('europe-west1').firestore.document('event
                 let myTask = {
                     eventID: objectID,
                     eventTitle: data.eventTitle,
-                    taskName: task.taskName
+                    eventPlace: data.eventPlace,
+                    eventDate: data.eventDate,
+                    taskDescription: task.taskDescription,
+                    taskName: task.taskName,
+                    taskDate: task.taskDate
                 }
                 let workerIndex = unifiedTasks.findIndex(wt => wt.name == worker);
                 unifiedTasks[workerIndex].tasks.push(myTask)
@@ -185,7 +193,11 @@ exports.deleteEvent = functions.region('europe-west1').firestore.document('event
                 let myTask = {
                     eventID: objectID,
                     eventTitle: data.eventTitle,
-                    taskName: task.taskName
+                    eventPlace: data.eventPlace,
+                    eventDate: data.eventDate,
+                    taskDescription: task.taskDescription,
+                    taskName: task.taskName,
+                    taskDate: task.taskDate
                 }
                 let workerIndex = unifiedTasks.findIndex(wt => wt.name == worker);
                 unifiedTasks[workerIndex].tasks.push(myTask)
