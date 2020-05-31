@@ -150,7 +150,7 @@ class ManageEvent extends React.Component {
     })
       .catch(e => console.log(e.message))
 
-      event.preventDefault(); //GET RID OF IT, WHEN YOU WILL CHANGE ACTIVE PANEdLS
+      event.preventDefault(); //GET RID OF IT, WHEN YOU WILL CHANGE ACTIVE PANELS
     }
 
     render() {
