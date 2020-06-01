@@ -106,6 +106,10 @@
   max-height: 200px;
 }
 
+h3 {
+  margin-left: 18%;
+}
+
 .addWorkerButton {
   background: #fce8e8;
   border-color: #D70016;
@@ -148,6 +152,7 @@
   border: 1px solid #D70016;
   border-radius: 20px;
   cursor: pointer;
+  margin-left: 18%;
 }
 
 .addTaskButton{
