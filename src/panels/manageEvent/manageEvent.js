@@ -181,7 +181,7 @@ class ManageEvent extends React.Component {
               defaultValue="24-05-2017T10:30"
               name = "eventDate"
               value={this.state.eventDate}
-              onChange = {this.handleChange}
+              onChange = {this.changeHandler}
             />
             <input
              className = "eventPlace"
