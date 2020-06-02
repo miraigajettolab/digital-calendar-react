@@ -147,6 +147,7 @@ class ManageEvent extends React.Component {
             tasks: this.state.tasks
       })
       .then(function(docRef) {
+        if(!alert("Событие сохранено")){window.location.reload();}
     })
       .catch(e => console.log(e.message))
 
